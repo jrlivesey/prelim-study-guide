@@ -1,0 +1,36 @@
+\chapter{Observational Techniques (500)}
+
+\courseinfo{Dr. Nicholas McConnell}{Fall 2024}
+
+
+\section{Tallying Light}
+\subsection{Flux and surface brightness}
+
+\subsection{Filters and magnitude systems}
+
+
+\section{Detectors, Signal, and Noise}
+\subsection{Detectors and detector noise}
+
+\subsection{Noise distribution and error propagation}
+
+\subsection{Signal-to-noise regimes}
+In total, the formula for calculating S/N is
+\begin{equation} \label{eq:s/n}
+    \frac{S}{N} = \frac{S}{\sqrt{S + B + R + D}},
+\end{equation}
+where $S$ is the observed signal from the target source, $B$ is the sky signal, $R$ is the read noise, and $D$ is the dark current in the detector. Let $A$ be the detector area, $\varepsilon$ the system efficiency, $f_\text{obs}$ the flux of light from the target, $I_\text{sky}$ the sky brightness, $\Omega$ the solid angle observed, $N_R$ the intrinsic read noise of the instrument per pixel, $N_D$ the dark noise per pixel per unit time, $G$ the gain, $n$ the number of pixels in the detector, and $t$ the total time for which the observation was taken. Then, the terms in the denominator of (\ref{eq:s/n}) are
+\begin{equation}
+    S = A \varepsilon f_\text{obs} t, \quad B = A \varepsilon I_\text{sky} \Omega t, \quad R = \left ( N_R + \tfrac{1}{2} G \right )^2 n, \quad D = N_D n t.
+\end{equation}
+Sometimes one of these terms dominates over the others, and in that case the S/N is largely set by that term. For instance, observations can be sky noise-limited or read noise-limited. Note the time dependence of (\ref{eq:s/n}) in these cases; if read noise dominates then S/N $\propto t$, whereas if read noise is much smaller than the other terms then S/N $\propto \sqrt{t}$. In any case, S/N always increases with time.
+
+
+\section{Optics, Telescopes, and Spectrographs}
+\subsection{Telescope optics}
+
+\subsection{Diffraction gratings and spectrographs}
+
+
+\section{Planning Observations}
+

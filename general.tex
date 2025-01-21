@@ -1,0 +1,117 @@
+\chapter{General Knowledge}
+
+
+\section{Astronomical Constants}
+The following table contains constants useful for the exam. These will be useful for problems involving direct calculation, but especially for those involving order-of-magnitude estimation. The constants are given here in \defbf{CGS} (centimeter-gram-second) units and \defbf{MKS} (meter-kilogram-second) units.
+
+Despite the fact that the reader has very likely only used MKS units before graduate school, CGS is still preferred by the writers of your exam. If that is no longer the case, it is best not to use this document for study; not because the exam will have substantially changed, but because there are bigger problems to worry about. Hell will have already frozen over, and great Birnam wood and high Dunsinane hill will both have come against you.
+
+\begin{center}
+    \begin{tabular}{|lccc|}
+        \hline
+        \textbf{Name} & \textbf{Symbol} & \textbf{CGS units} & \textbf{MKS units} \\
+        \hline
+        Gravitational constant & $G$ & $6.674 \times 10^{-8}$ dyn cm$^2$ g$^{-2}$ & $6.674 \times 10^{-11}$ N m$^2$ kg$^{-2}$ \\
+        Boltzmann constant & $k_B$ & & \\
+        Planck constant & $h$ & & \\
+        Stefan--Boltzmann constant & $\sigma$ & & \\
+        Solar luminosity & $\lsun$ & $3.828 \times 10^{33}$ erg s$^{-1}$ & $3.828 \times 10^{26}$ W \\
+        Solar mass & $\msun$ & $1.988 \times 10^{33}$ g & $1.988 \times 10^{30}$ kg \\
+        Electron mass & $m_e$ & $9.109 \times 10^{-28}$ g & $9.109 \times 10^{-31}$ kg \\
+        Proton mass & $m_p$ & $1.673 \times 10^{-24}$ g & $1.673 \times 10^{-27}$ kg \\
+        Elementary charge & $e$ & $4.803 \times 10^{-10}$ g$^{1/2}$ cm$^{3/2}$ s$^{-1}$ & $1.602 \times 10^{-19}$ C \\
+        \hline
+    \end{tabular}
+\end{center}
+
+If there is one thing to memorize for this exam, it is the above constants (or rather, their orders of magnitude in CGS units).
+
+
+\section{Important Notation}
+\subsection{Summation}
+Often, particularly in Astro 702, ``Einstein notation'' is used for sums over multiple indices.\footnote{It's not actually \href{https://en.wikipedia.org/wiki/Einstein_notation}{Einstein notation}.} In this notation, an index --- say $i$ --- that is repeated within the same term implies summation over whatever set of values $i$ may take. The sum
+\begin{equation}
+    \sum_{i=1}^3 x_i y_i = x_1 y_1 + x_2 y_2 + x_3 y_3
+\end{equation}
+can thus be written
+\begin{equation} \label{eq:sum-einstein}
+    x_i y_i.
+\end{equation}
+If $x_i$ and $y_i$ denote components of vectors, then notice that (\ref{eq:sum-einstein}) amounts to a dot product, $\vb*{x} \vdot \vb*{y}$. We can also apply the repeated indices to operators, and hence we can re-write many vector operations in this notation.
+\begin{align}
+    \div{\vb*{u}} = \pdv{u_i}{x_i}
+\end{align}
+
+\subsection{The advective derivative}
+The \defbf{advective derivative}
+\begin{align} \label{eq:advective-derivative}
+    \mdv{} \equiv \pdv{t} + \vb*{u} \vdot \grad{}
+\end{align}
+describes the time dependence of some quantity in a reference frame co-moving with a fluid parcel. In the case where there is no divergence of whatever field along a streamline ($\vb*{u} \vdot \grad{} = 0$), the advective derivative is equal to the usual (``Eulerian'') time derivative.
+
+This operator is also known as the \textit{material, Lagrangian, Stokes, convective,} or \textit{substantive} derivative. If you write any of these on your exam, the person grading will know what you mean.
+
+\subsection{Term symbols}
+\note{It is not necessary to understand all the quantum mechanics here, only how to interpret a term symbol.} \newline
+
+\noindent Astronomers use \defbf{term symbols} --- which are notational tools developed by atomic spectroscopists --- to uniquely identify the energy states of atoms and molecules.
+
+Such a symbol is written for an atomic energy state as follows.
+\begin{align}
+    ^{2S+1}L_J
+\end{align}
+Here, $S$ is the total spin quantum number of the state (vector sum of all electron spins), $L$ is its total orbital angular momentum quantum number, and $J$ is its total angular momentum quantum number. These quantities satisfy the vector sum $\vb*{J} = \vb*{L} + \vb*{S}$. While we use numbers for $S$ and $J$ in a term symbol, a letter is used for $L$. The scheme for assigning these letters probably made sense to someone at some point. The first few letters are given below.
+\begin{center}
+    \begin{tabular}{|c|cccccc|}
+        \hline
+        $L$ & 0 & 1 & 2 & 3 & 4 & 5 \\
+        \hline
+        Designation & S & P & D & F & G & H \\
+        \hline
+    \end{tabular}
+\end{center}
+As as example, consider the ground state of carbon. Using Pauli's exclusion principle to tally up electron spins, we find that $S = 1$ (the two electrons in the outer $p$ shell contribute, each with spin $+1/2$). By similar logic, $L = 1$. In the lowest energy state, $\vb*{L}$ and $\vb*{S}$ are antiparallel, so $J = 0$.\footnote{It is extremely unlikely that a prelim question will require the derivation of a term symbol.} Hence the term symbol for the ground state of carbon is $^3$P$_0$.
+
+While often not required, the parity of an energy state can be expressed in a term symbol. The parity is $(-1)^{\sum_i \ell_i}$, where $\ell_i$ is the orbital quantum number of each electron. An atom with parity 1 (even) can be marked with a subscript ``g'' and an atom with parity $-1$ (odd) can be marked with a subscript ``u.''\footnote{From, respectively, the German words \textit{gerade} and \textit{ungerade}.} In the ground state of carbon, it so happens that $\sum_i \ell_i = 2$, and thus the state has even parity. Its term symbol may therefore be written $^3$P$_{0,\text{g}}$.
+
+Molecular energy states are represented somewhat differently, since unlike atoms molecules are not in general spherically symmetric. $L$ and $J$ cease to be good (meaning time-independent) quantum numbers. For a homonuclear diatomic molecule (\ce{H2}, \ce{N2}, etc.), we can take advantage of its rotational symmetry about the internuclear axis and get some new good quantum numbers. The term symbol for a molecular energy state is written in the following way.
+\begin{align}
+    ^{2S+1}\Lambda_\Omega%^\pm
+\end{align}
+It reads similarly to an atomic term symbol; $S$ is again the total spin quantum number, $\Lambda$ is the projection of the total $\vb*{L}$ along the internuclear axis, and $\Omega$ is the projection of the total $\vb*{J}$ along the internuclear axis.
+% Could talk about parity again but I don't think we need to.
+Once again, the orbital quantum number is denoted with a letter.
+\begin{center}
+    \begin{tabular}{|c|cccccc|}
+        \hline
+        $\Lambda$ & 0 & 1 & 2 & 3 & 4 & 5 \\
+        \hline
+        Designation & $\Sigma$ & $\Pi$ & $\Delta$ & $\Phi$ & $\Gamma$ & H \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsection{Term diagrams}
+Term diagrams show the transitions between energy levels that are possible for an atom or molecule. The ability to write out and interpret term diagrams is important for both Astro 700 and ISM.
+
+
+\section{Cosmic Cliff's Notes}
+What follows is a brief description of some useful concepts that apply to all areas of astrophysics.
+
+\subsection{Timescales}
+In the context of astrophysics, the word \defbf{timescale} is usually taken to mean an order-of-magnitude estimate for how long it will take for some monotonically time-dependent quantity to reach a particular value.
+
+As an example, suppose a lone planet orbits a star with an orbital eccentricity $e$. Over time, tides raised on the planet by the star act to circularize its orbit, at a rate that is initially $\dot{e}$. We want to know roughly how long it will take for the planet to reach a circular orbit, with $e = 0$. The circularization timescale for the planet is
+\begin{align}
+    t_\text{circ} \sim e / \dot{e}.
+\end{align}
+Despite the fact that $\dot{e}$ changes non-trivially with $e$, it is acceptable to use just the initial values of $e$ and $\dot{e}$ in our estimation.\footnote{In fact, it's necessary; strictly speaking $e$ will only asymptotically approach zero. That is, if we were to do a proper analytic calculation we would find that $t_\text{circ} = \infty$, which isn't helpful.}
+
+\subsection{Virial equilibrium}
+A cloud of material that is balanced against collapse by its internal energy is said to be \defbf{virial}. It turns out that in the context of gravity (i.e., all astrophysical scenarios) such a cloud satisfies
+\begin{align} \label{eq:virial-equilibrium}
+    \langle U \rangle = -2\langle K \rangle,
+\end{align}
+where $U$ is potential energy and $K$ the internal kinetic energy. A derivation of (\ref{eq:virial-equilibrium}) is given in Appendix \ref{sec:derivation-virial-theorem}. A cloud that is in virial equilibrium is also in hydrostatic equilibrium: the state in which the outward pressure gradient force cancels the inward force of gravity. The equation of hydrostatic equilibrium is derived in Appendix \ref{sec:derivation-hydrostatic-balance}.
+
+A virialized gas will collapse under gravity when its mass exceeds the \defbf{Jeans mass} $M_J$, or when its diameter shrinks below the \defbf{Jeans length} $\lambda_J$.

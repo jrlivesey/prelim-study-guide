@@ -1,0 +1,118 @@
+\documentclass[twoside]{report}
+
+\usepackage{geometry}
+    \geometry{top=1in, bottom=1in, left=1in, right=1in}
+\usepackage[utf8]{inputenc}
+\usepackage[affil-it]{authblk}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[italicdiff]{physics}
+\usepackage[colorlinks, allcolors=purple]{hyperref}
+\usepackage{tensor}
+\usepackage{upgreek}
+\usepackage{mhchem}
+\usepackage{comment}
+\usepackage{etaremune}
+% \usepackage{newtxtext, newtxmath} % Turn this on for Times New Roman, if you're a weirdo who doesn't like Computer Modern
+\usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \lhead{\leftmark}
+    \rhead{\thepage}
+    \cfoot{}
+
+
+%%% TEXT COMMANDS %%%
+
+\newcommand\secbf[1]{\textbf{\textsf{#1}}} % for paragraph headings
+\newcommand\defbf[1]{\textbf{\textsf{#1}}} % for bolded definitions in text
+\newcommand\note[1]{\fbox{
+    \begin{minipage}{\linewidth}
+        \textsf{\textbf{Note:} #1}
+    \end{minipage}
+}} % for cautionings
+
+\newcommand\authorlist{
+    Joseph R. Livesey \\
+    --- add authors here ---
+}
+
+\newcommand\contributorlist{}
+
+\newcommand\courseinfo[2]{\note{
+    We took this course with \textbf{#1} in \textbf{#2.} The content and structure of the syllabus may have changed in the time since, as well as the appropriate scope of exam questions.
+}}
+
+\newcommand\highlight[1]{
+    \newline\newline
+    \fbox{\begin{minipage}{\linewidth}
+        #1
+    \end{minipage}}
+    \newline\newline
+} % for boxing important concepts, especially equations
+
+
+%%% MATH COMMANDS %%%
+
+\newcommand\mdv[1]{\frac{D#1}{Dt}}
+\newcommand\mdvn[2]{\frac{D^#2 #1}{Dt^#2}}
+
+\def\lsun{{L_\odot}}
+\def\msun{{M_\odot}}
+\def\mearth{{M_\oplus}}
+\def\rsun{{R_\odot}}
+\def\rearth{{R_\oplus}}
+\def\HI{\textsc{Hi}}
+\def\HII{\textsc{Hii}}
+\def\Ha{H$\alpha$}
+
+\DeclareMathOperator\arctanh{arctanh}
+\DeclareMathOperator\arcsinh{arcsinh}
+\DeclareMathOperator\arccosh{arccosh}
+
+
+%%% CONTENTS %%%
+
+\numberwithin{equation}{chapter}
+
+\title{Astronomy Preliminary Exam \\ Study Guide}
+\author{\authorlist}
+\affil{University of Wisconsin--Madison}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\include{preface}
+
+\tableofcontents
+
+\include{general}
+
+\part{Astrophysical Theory \& Methods}
+
+\include{700}
+
+\include{702}
+
+\include{500}
+
+\part{Astrophysical Systems}
+
+\include{715}
+
+\include{720}
+
+\include{730}
+
+\include{735}
+
+\part*{Appendix}
+
+\include{appendix}
+
+\end{document}

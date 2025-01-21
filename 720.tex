@@ -1,0 +1,78 @@
+\chapter{The Interstellar Medium (720)}
+
+\courseinfo{Prof. Susanna Widicus Weaver}{Spring 2024}
+
+
+\section{The Phases of the ISM} \label{sec:ism-phases}
+The ISM consists of several distinct phases. They are listed in the table below with characteristic temperatures, number densities, and the state of hydrogen within each.
+\begin{center}
+    \begin{tabular}{|ccccc|}
+    \hline
+         \textbf{Phase} & \textbf{Temperature} & \textbf{Density} & \textbf{H state} & \textbf{Observed through} \\
+         & \textbf{(K)} & \textbf{(cm$^{-3}$)} & & \\
+         \hline
+         Molecular clouds & 10--20 & 10$^2$--10$^6$ & molecular & radio and infrared lines \\
+         Cold neutral medium & 50--100 & 20--50 & neutral & \HI~21 cm absorption \\
+         Warm neutral medium & 6000--10000 & 0.2--0.5 & neutral & \HI~21 cm emission \\
+         Warm ionized medium & 8000 & 0.2--0.5 & ionic & \Ha~emission \\
+         \HII~regions & 8000 & 10$^2$--10$^4$ & ionic & \Ha~emission \\
+         Hot ionized medium & 10$^6$--10$^7$ & 10$^{-4}$--10$^{-2}$ & ionic (metals too) & X-ray emission, \\
+         & & & & metal UV absorption \\
+         \hline
+    \end{tabular}
+\end{center}
+Each of these components is well mixed (read: in LTE), but is perturbed by dynamic processes like stellar winds and supernovae. The ISM is heated by the interstellar radiation field (electromagnetic) and by cosmic rays. It is permeated by magnetic fields, while gravitational fields are really only important in dense clouds.
+
+
+\section{Radiative Transfer Redux} \label{sec:ism-rt}
+At this point the reader is directed back to \textsection\ref{sec:radiative-transfer} for a more detailed discussion of the radiative transfer equation and the Einstein coefficients. The discussion of radiative transfer here is specific to concepts relevant to the ISM.
+
+\subsection{Interaction of light and the ISM}
+
+\subsection{Line shapes}
+
+
+\section{Collisional Excitation} \label{sec:ism-collisional}
+
+
+\section{Optical and UV Absorption Features} \label{sec:ism-absorption}
+\subsection{The curve of growth}
+
+
+\section{The 21 cm Line} \label{sec:ism-21cm}
+
+
+\section{Molecular Clouds} \label{sec:ism-clouds}
+
+
+\section{Photoionization and HII Regions} \label{sec:ism-photoionization}
+
+
+\section{Dust} \label{sec:ism-dust}
+Interstellar \defbf{dust} is an important component of the ISM. It plays a role in ISM chemistry, and modifies the interstellar radiation field by absorbing light and re-emitting it at thermal (infrared) wavelengths. There is ample observational evidence for dust in the Milky Way, including: (i) depletion of refractory elements from the gas-phase ISM, (ii) extinction of background starlight, (iii) infrared emission, (iv) optical polarization, and (v) relic grains found in meteorites on Earth.
+
+Dust grains range in size from \defbf{PAH}s (polycyclic aromatic hydrocarbons; size $\sim 10$ \r{A}, density\footnote{A linear density is given along the line of sight.} $\sim 1$ cm$^{-1}$) to ``large grains'' (size $\sim 10^3$ \r{A}, density $\sim 10^{-8}$ cm$^{-1}$). PAHs are complex organic molecules with 20--50 carbon atoms that we often see through absorption lines at superpositions of their many vibrational modes.
+
+Dust is composed of
+
+Let $Q_\text{abs}$ denote the emissivity of a grain and $a$ its radius, and assume an isotropic radiation field $J_\lambda$. The heating rate for this dust is then
+\begin{align}
+    \Gamma = (4\pi \text{ sr}) \times \int_0^\infty J_\lambda Q_\text{abs} \: d\lambda \times (\pi a^2).
+\end{align}
+The emissivity is close to unity when the dust grain cross section is much larger than the wavelength. This is true for UV radiation, which accounts for most heating of dust. In this case $Q_\text{abs} \sim 1$ and we have
+\begin{align}
+    \Gamma_\text{UV} = 4\pi^2 a^2 J_\text{UV},
+\end{align}
+where $J_\text{UV} \simeq \int_0^\infty J_\lambda \: d\lambda$. Assuming TE we can apply Kirchhoff's law to obtain $J_\text{UV} = \sigma T_d^4 \langle Q_\text{abs} \rangle$, where $\langle Q_\text{abs} \rangle$ is the ``Planck-average'' emissivity. $T_d$, the equilibrium dust temperature, depends on the radiation field, and we can therefore use the empirically derived power law relationship
+\begin{align}
+    \langle Q_\text{abs} \rangle \propto a T_d^\beta,
+\end{align}
+where $\beta \simeq 2$. Typical dust temperatures in the diffuse ISM are $\sim 10$ K. In \HII~regions they are more like $\sim 10^2$ K (compare to gas temperature of $\sim 10^4$ K).
+
+The \defbf{gas-to-dust ratio} tells us the relative amount of dust that is present in a column. Using the $B - V$ color excess $E(B - V) = A_\nu/R_\nu$, the gas-to-dust ratio is
+\begin{align}
+    \frac{M_H}{M_d} = \frac{N_H}{E(B - V)}
+\end{align}
+Note that $N_H$ is the column density for hydrogen \textit{atoms}; we would double-count \ce{H2}, for example. This ratio is often used as a proxy for metallicity.
+
+

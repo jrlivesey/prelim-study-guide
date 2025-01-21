@@ -1,0 +1,148 @@
+\chapter{Dynamics (702)}
+
+\courseinfo{Prof. Sebastian Heinz}{Spring 2024}
+
+
+\section{What Is and What Is Not a Fluid?}
+
+
+\section{The Fluid Equations}
+\subsection{The Boltzmann equation and its moments}
+We arrive at the \defbf{collisionless Boltzmann equation:}
+\highlight{
+    \begin{equation} \label{eq:collisionless}
+        \pdv{f}{t} + \pdv{x_i} (v_i f) + \pdv{v_i} \left ( \frac{F_i}{m} f \right ) = 0.
+    \end{equation}
+}
+If we (i) multiply through by mass $m$ and (ii) take the first moment,\footnote{Using the fact that $\int d^3v \: m \pdv*{f}{t} = \pdv*{\rho}{t}$.} we arrive at the \defbf{continuity equation:}
+\begin{equation}
+    \pdv{\rho}{t} + \pdv{x_i} (\rho u_i) = \pdv{\rho}{t} + \vb*{u} \vdot \grad{\rho} + \rho \div{\vb*{u}} = \mdv{\rho} + \rho \div{\vb*{u}}.
+\end{equation}
+\textbf{...}
+
+\subsection{The three inviscid fluid equations}
+From the collisionless Boltzmann equation we can derive the following three fluid equations (in the inviscid case).
+\highlight{
+    \begin{align}
+        \defbf{Continuity} \quad & \pdv{\rho}{t} + \div{(\rho \vb*{u})} = 0 \label{eq:fluid-mass} \\
+        \defbf{Momentum} \quad & \pdv{\vb*{u}}{t} + (\vb*{u} \vdot \grad{}) \vb*{u} = \frac{\vb*{F}}{m} - \frac{1}{\rho} \grad{P} \label{eq:fluid-momentum} \\
+        \defbf{Energy} \quad & \pdv{\mathcal{E}}{t} + \vb*{u} \vdot \grad{\mathcal{E}} = -\frac{P}{\rho} \div{\vb*{u}} \label{eq:fluid-energy} \\
+        \nonumber
+    \end{align}
+}
+
+
+\section{Perfect Fluids}
+\subsection{Strain}
+
+\subsection{Barotropic flows}
+In a barotropic fluid, pressure can be expressed as a pure function of density:
+\begin{align}
+    P = P(\rho).
+\end{align}
+Such a function is called an \defbf{equation of state}. Examples of barotropic fluids include:
+\begin{itemize}
+    \item Adiabatic ideal gases, which have the equation of state $P \propto \rho^\gamma$.
+    \item Electron degenerate gases, which have the equation of state $P \propto \rho^{5/3}$.
+    \item A gas in which the temperature is determined by the balance between radiative cooling and an independent heating process.
+\end{itemize}
+The \defbf{adiabatic index} is
+\begin{align}
+    \gamma \equiv \frac{C_P}{C_V} = 1 + \frac{2}{\beta},
+\end{align}
+where $C_P$ and $C_V$ are respectively the specific heat capacities at constant pressure and at constant volume, and $\beta$ is the number of degrees of freedom. For a (non-relativistic) ideal gas, all degrees of freedom are translational, so $\beta = 3$ and $\gamma = 5/3$.
+
+For a barotropic, irrotational flow we can write the flow velocity as the gradient of a scalar potential, $\vb*{u} = \grad{\phi}$. This phenomenon is termed \defbf{potential flow}. If the flow is stationary (meaning $D\rho/Dt = 0$), then the continuity equation (\ref{eq:fluid-mass}) becomes simply
+\begin{align}
+    \laplacian{\phi} = 0,
+\end{align}
+which is Laplace's equation. To solve for potential flow in the presence of some obstacle, we first assume a constant background velocity $\vb*{u}_0 = u_0 \vu*{x}$, which implies the background potential $\phi_0 = u_0 x$. We identify a boundary condition at the obstacle (e.g., the component of $\vb*{u}$ normal to the surface must be zero). Then, we write out Laplace's equation in whatever co-ordinate system is most convenient and solve for $\phi$.
+
+\subsection{The vorticity equation}
+The \defbf{vorticity} of a fluid $\vb*{\omega} \equiv \curl{\vb*{u}}$ becomes nonzero when surfaces of constant density and surfaces of constant pressure are misaligned with respect to one another. Taking the curl of the momentum equation (\ref{eq:fluid-momentum}) yields the vorticity equation
+\begin{align}
+    \pdv{\vb*{\omega}}{t} = (\vb*{\omega} \vdot \grad) \vb*{u} - \vb*{\omega} (\div{\vb*{u}}) + \frac{1}{\rho^2} (\grad{\rho} \cp \grad{P}).
+\end{align}
+One can replace $\vb*{u} \to \vb*{u}_\perp$ in this equation, where $\vb*{u}_\perp$ is the component of the velocity parallel to the vorticity, since the terms containing $\vb*{u}_\parallel$ cancel. In an initially irrotational fluid, the only thing that can create vortices is a nonzero $\grad{\rho} \cp \grad{P}$; this is called the baroclinic term.
+
+Let $\Gamma = \oint d\vb*{\ell} \vdot \vb*{u}$ denote the \defbf{circulation} of a fluid around some closed curve. Clearly in an irrotational fluid, $\Gamma = 0$ globally. Stokes' theorem allows us to re-write the circulation as $\Gamma = \int d\vb*{A} \vdot \vb*{\omega}$. Integration of the vorticity equation gives us
+\begin{align}
+    \dv{\Gamma}{t} = \frac{1}{\rho^2} \int d\vb*{A} \vdot (\grad{\rho} \cp \grad{P}),
+\end{align}
+from which we gather that for a barotropic, incompressible fluid the circulation is conserved. This idea is the Kelvin circulation theorem.
+
+\subsection{Bernoulli's law}
+Take the momentum equation (\ref{eq:fluid-momentum}) and assume a conservative force, so that the acceleration of a parcel is $\vb*{F}/m = -\grad{\Phi}$. Dotting the resulting equation with $\vb*{u}$ yields the Bernoulli equation
+\begin{align} \label{eq:bernoulli}
+    \mdv{} \left ( \tfrac{1}{2} u^2 + \Phi + H \right ) = 0,
+\end{align}
+where $H = \int dP/\rho$ is the (specific) enthalpy. The term in parentheses is the \defbf{Bernoulli constant} $\mathcal{B}$, which (\ref{eq:bernoulli}) tells us is conserved along streamlines. It is usually most easily evaluated at infinity, where $\Phi = 0$.
+
+It is useful to note that the Bernoulli equation is really nothing more than a statement of conservation of energy. We have specific kinetic energy $\tfrac{1}{2} u^2$, potential energy $\Phi$, and internal (thermal + $P \: dV$) energy $H$, and their sum is constant.
+
+
+\section{Viscous Fluids}
+\subsection{The Navier--Stokes equation}
+
+\subsection{Turbulence and the Reynolds number}
+
+
+\section{Waves and Instabilities}
+\subsection{Linearization of the fluid equations}
+The fluid equations are nonlinear, but we can linearize them by breaking each of the three time-dependent quantities into a background value and a perturbation: $P = P_0 + P'$, $\rho = \rho_0 + \rho'$, and $\vb*{u} = \vb*{u}_0 + \vb*{u}'$. This approach is valid because changes in these quantities will always be small relative to their absolute values. Substituting these expressions into the fluid equations (\ref{eq:fluid-mass}--\ref{eq:fluid-energy}) and doing some algebra yields new equations broken into background, perturbation, and mixed terms. We drop all second-order terms (those that contain a product of two perturbations, which will be very small). Then, we assume that the background is hydrostatic, so that we can set $\vb*{u}_0 = 0$. Our PDEs are now
+\begin{align}
+    \pdv{\rho'}{t} + \div{(\rho_0 \vb*{u}')} &= 0 \label{eq:linear-continuity} \\
+    \pdv{\vb*{u}'}{t} + \frac{1}{\rho_0} \grad{P'} - \frac{\rho'}{\rho_0^2} \grad{P_0} &= \frac{\vb*{F}'}{m} \label{eq:linear-momentum} %\\
+    % P &= P_0 \left ( \frac{\rho}{\rho_0} \right )^\gamma.
+\end{align}
+Note that we have omitted the energy equation because we don't need it; if we know the equation of state we can substitute $P(\rho)$ into the continuity and momentum equations to obtain two linear equations in two variables: $P'$ and $\vb*{u}'$.
+
+\subsection{Acoustic waves}
+Assume the background quantities like $P_0$ are constant everywhere; their gradients are zero. Therefore, taking the divergence of the linearized momentum equation (\ref{eq:linear-momentum}) gives us
+\begin{align}
+    \pdv[2]{P'}{t} = \pdv{P}{\rho} \laplacian{P'},
+\end{align}
+which is the acoustic wave equation. Such a wave has the characteristic velocity $a_s \equiv \sqrt{\pdv*{P}{\rho}}$, which is the speed of sound in the medium. In an adiabatic ideal gas, $P = P_0 (\rho/\rho_0)^\gamma$, this is the \defbf{adiabatic sound speed} $a_s = \sqrt{\gamma P_0/\rho_0}$. In an isothermal gas $\gamma = 1$ and this speed is the \defbf{isothermal sound speed} $c_s = \sqrt{P_0/\rho_0}$.
+
+The propagation of acoustic waves with wavevector $\vb*{k}$ is given by the \defbf{phase velocity}
+\begin{align}
+    \vb*{c}_p = \frac{\omega}{k^2} \vb*{k}.
+\end{align}
+The relationship between angular frequency and wavenumber $\omega = \omega(\vb*{k})$ for any type of wave is its \defbf{dispersion relation}. For acoustic waves, $\omega(\vb*{k}) = \pm a_s \norm{\vb*{k}}$.
+
+\subsection{Kelvin--Helmholtz instability}
+
+\subsection{Rayleigh--Taylor instability}
+
+
+\section{Shocks}
+\subsection{Normal shocks and the jump conditions}
+
+\subsection{Oblique shocks}
+
+\subsection{Blast waves}
+In an explosion (e.g., a supernova) a large amount of thermal energy is released instantaneously within a small volume. As long as the internal pressure is much greater than the ram pressure of the surrounding ISM, then the resulting blast wave will accelerate as it expands. Such a blast wave is an instance of a strong shock.
+
+The \defbf{Sedov--Taylor solution} approximates the radius of the resulting blast wave at a given time $t$ after an explosion. It is:
+\highlight{
+    \begin{equation} \label{eq:sedov-taylor}
+        r_\text{shock} = \xi_0 \left ( \frac{E t^2}{\rho_\text{ISM}} \right )^{1/5}.
+    \end{equation}
+}
+While a somewhat crude approximation, this equation is extremely useful because it is (i) simple and (ii) only requires that we know the energy of the explosion and the density of the surrounding ISM. The Sedov--Taylor solution is derived from dimensional analysis alone. The similarity variable $\xi_0$ is dimensionless.\footnote{It is called the \textit{similarity variable} because it fully encapsulates the relationship between time and radius. Blast waves with the same $\xi_0$ evolve identically.} One will not be asked on the exam to calculate the similarity variable; it is a highly non-trivial function of the adiabatic index. $\xi_0 \sim 1$ suffices for order-of-magnitude estimation.
+
+The Sedov--Taylor solution has some notable limitations. In particular, it assumes:
+\begin{itemize}
+    \item $\rho_\text{ISM}$ is constant (i.e., the ISM was not disturbed by the progenitor).
+    \item The explosion was long enough ago that the mass swept up in the shock exceeds the mass of the explosion ejecta (the latter is unaccounted for).
+    \item The explosion was not long enough ago that radiative cooling has significantly changed the internal pressure of the blast wave.
+\end{itemize}
+
+
+\section{Magnetohydrodynamics}
+\subsection{The MHD equations}
+
+\subsection{Alfvén waves}
+
+\subsection{Fast and slow modes}
+

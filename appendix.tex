@@ -1,0 +1,108 @@
+\addcontentsline{toc}{part}{\bfseries Appendix}
+\renewcommand{\chaptername}{Appendix}
+% \renewcommand{\thechapter}{\Alph{chapter}}
+% \setcounter{chapter}{0}
+\renewcommand{\thechapter}{A} % This is a hack --- should be able to reset the counter and have lettered chapters separate from numbered chapters somehow
+
+
+\chapter{Derivations}
+
+
+\section{Hydrostatic Balance} \label{sec:derivation-hydrostatic-balance}
+Consider a thin spherical shell of material in a body, like a star or planet, that is held in equilibrium by a balance between gravity and the pressure gradient force. Recall that pressure has units of force/area; naturally the pressure gradient force felt by this shell of fluid can be written $A \Delta P$, where $A$ is the surface area of the shell and $\Delta P$ is the difference between the pressure at the bottom and top of the layer. The gravitational force experienced by this layer, meanwhile, is $-M g$, where $M = A \Delta z \rho$ is its total mass. Setting these forces equal, the surface area cancels out:
+\begin{align}
+    \Delta P &= -\rho g \Delta z.
+\end{align}
+In the limit of an infinitesimally thin shell, we are left with the differential equation
+\highlight{
+    \begin{equation}
+        dP = -\rho g \: dz.
+    \end{equation}
+}
+
+We could also start from the vertical component of the Navier--Stokes equation. If we assume a barotropic fluid in which gravity is the only external force, the other terms disappear and we are left with
+\begin{align}
+    \frac{1}{\rho} \pdv{P}{z} &= \frac{F_z}{m} \\
+    \pdv{P}{z} &= -\rho g.
+\end{align}
+
+In Earth's ocean we can approximate both the density and gravitational acceleration as constant, and we have a pressure that changes linearly with depth:
+\begin{align}
+    P \propto -\rho_0 g_0 z.
+\end{align}
+For the interior of a star, however, both of these assumptions are poor. The density changes with pressure according to a polytropic equation of state: $\rho(P) \propto P^{n/(n+1)}$. The gravitational acceleration at radial distance $z$ is $g = G M(z) / z^2$, where $M$ is the mass interior to $z$.
+
+
+\section{The Virial Theorem} \label{sec:derivation-virial-theorem}
+Consider a gravitationally bound collection of $N$ particles. The $i$-th particle has mass $m_i$, position $\vb*{r}_i$, velocity $\vb*{v}_i$, and momentum $\vb*{p}_i$. In the center-of-mass reference frame, this gas has moment of inertia
+\begin{align}
+    I  = \sum_{i=1}^N m_i \vb*{r}_i \vdot \vb*{r}_i.
+\end{align}
+Differentiation gives us
+\begin{align} \label{eq:moi-derivative}
+    \dv{I}{t} = 2 \sum_i m_i \vb*{v}_i \vdot \vb*{r}_i = 2 \sum_i \vb*{p}_i \vdot \vb*{r}_i.
+\end{align}
+Differentiating again, we have
+\begin{align}
+    \dv[2]{I}{t} = 2 \left ( \sum_i \dv{\vb*{p}_i}{t} \vdot \vb*{r}_i + \sum_i \vb*{p}_i \vdot \dv{\vb*{r}_i}{t} \right ) = 2 \left ( \sum_i \vb*{F}_i \vdot \vb*{r}_i + \sum_i m_i \vb*{v}_i \vdot \vb*{v}_i \right ).
+\end{align}
+The average of (\ref{eq:moi-derivative}) over some span of time $\tau$ is given by
+\begin{align} \label{eq:moi-derivative-avg}
+    \left\langle \dv{I}{t} \right\rangle = \frac{1}{\tau} \int_0^\tau \dv[2]{I}{t} \: dt.
+\end{align}
+For a virialized system, there will be no secular changes in the moment of inertia; $\langle dI/dt \rangle = 0$. This fact implies that the integrand in (\ref{eq:moi-derivative-avg}) is also zero, and thus
+\begin{align}
+    \sum_i \vb*{F}_i \vdot \vb*{r}_i = -\sum_i m_i \vb*{v}_i \vdot \vb*{v}_i.
+\end{align}
+The left-hand side is the combined average gravitational potential energy of all the particles, and the right-hand side is twice their combined average kinetic energy.
+\highlight{
+    \begin{equation} \label{eq:virial-theorem}
+        \langle U \rangle = -2\langle K \rangle
+    \end{equation}
+}
+We have arrived at the virial theorem we all know and love.
+
+
+\section{The Jeans Length and the Jeans Mass}
+When a gas in virial equilibrium shrinks to a scale less than its Jeans length, it will undergo gravitational collapse. That is, the gravitational potential energy of the gas must overcome its internal (kinetic) energy. Assume TE, so that we can write down the internal energy in terms of a temperature. The gravitational potential energy is
+\begin{align}
+    \frac{G M m}{r^2} = \tfrac{4}{3} \pi G \rho m r,
+\end{align}
+where $M$ is the total mass of the cloud and $m$ is the mass of each particle (or the mean molecular weight of a multi-species cloud). The internal energy, assuming a monatomic ideal gas, is
+\begin{align}
+    \tfrac{3}{2} N k_B T = \frac{}{}
+\end{align}
+
+
+\section{The Free-Fall Time}
+The free-fall time is the timescale on which a spherical cloud will collapse under its own gravity, neglecting any other forces. First consider a single particle in the cloud, which begins at a distance $R$ from the center.
+
+Kepler's third law tells us the period of any two-body orbit with semi-major axis $a$, and applies regardless of the orbit's eccentricity.
+\begin{align}
+    P = 2\pi \sqrt{\frac{a^3}{G M}}
+\end{align}
+A straight trajectory towards the center of mass is equivalent to a Keplerian orbit with $e = 1$. The semi-major axis is the average distance of an orbiting body: $a = R/2$ for this trajectory. The free-fall time will be half of the orbital period here (since the particle will go down and not back up).
+\begin{align}
+    t_\text{ff} = \frac{P}{2} = \pi \sqrt{\frac{(R/2)^3}{G M}}
+\end{align}
+In the single-particle picture, $M$ is just the mass of the body towards which the particle is falling. In the context of a collapsing cloud of many particles, we will assume a spherically symmetric cloud of uniform density, so that gravitational interactions between this particle at distance $R$ and all particles exterior to $R$ cancel out. All that matters are the particles interior to $R$; the relevant mass is
+\begin{align}
+    M = \tfrac{4}{3} \pi R^3 \rho,
+\end{align}
+where $\rho$ is the mass density interior to $R$. Thus,
+\highlight{
+    \begin{align}
+        t_\text{ff} = \sqrt{\frac{3\pi}{32G \rho}}.
+    \end{align}
+}
+
+
+\section{Kepler's Second Law}
+Unless the exoplanets course is added to the prelim in the future, it is unlikely that Kepler's laws will be a topic of much importance to the exam. However,
+
+Stated in words, Kepler's second law is that an orbiting body sweeps out equal areas in equal spans of time.
+
+Recall that the angular momentum of a mass $m$ may be written $\vb*{r} \cp m \vb*{v}$. The specific angular momentum of a body on a Keplerian orbit is thus $\vb*{h} = \vb*{r} \cp \vb*{v}$, in a co-ordinate system centered on the body it orbits.
+\begin{align}
+    \dv{\vb*{h}}{t} = \dv{\vb*{r}}{t} \cp \vb*{v} + \vb*{r} \cp \dv{\vb*{v}}{t}
+\end{align}
